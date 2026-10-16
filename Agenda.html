@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+  <title>活動流程 Agenda</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      display: block;
+      margin: 0;
+      padding: 0;
+      background-color: #0f1117;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      color: #d0d0d0;
+    }
+
+    /* 懸浮首頁按鈕 */
+    .home-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background-color: #1a1d27;
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+    .home-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    }
+    .home-link svg {
+      width: 26px;
+      height: 26px;
+      fill: #e8a06a;
+      transition: fill 0.2s ease;
+    }
+    .home-link:hover svg {
+      fill: #0076cc;
+    }
+
+    /* 主容器 */
+    .page-container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 80px 16px 48px;
+    }
+
+    /* 頁面標題 */
+    .page-title-wrap {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .page-title {
+      display: inline-block;
+      font-size: 36px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #5b9bd5 0%, #8ec3f0 50%, #5b9bd5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+    .page-tip {
+      font-size: 16px;
+      color: #a5a8bf;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* 日期分區標題 */
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #d0d0d0;
+      margin: 30px 0 14px;
+      padding-left: 12px;
+    }
+    .section-title.date-sg {
+      border-left: 5px solid #0069b4;
+    }
+    .section-title.date-th {
+      border-left: 5px solid #b84a0a;
+    }
+    .section-title.date-neutral {
+      border-left: 5px solid #6a6f85;
+    }
+
+    /* 行程卡片清單 */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* 單張行程卡片 */
+    .contact-card {
+      border-radius: 18px;
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    /* 光暈裝飾 */
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 10px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    /* 新加坡行程：深藍漸層 */
+    .item-sg {
+      background: linear-gradient(135deg, #002d54 0%, #004f8a 45%, #0069b4 100%);
+    }
+    /* 泰國行程：深橙漸層 */
+    .item-th {
+      background: linear-gradient(135deg, #5a1800 0%, #8c3200 45%, #b84a0a 100%);
+    }
+    /* 中性行程（抵達/轉機/自由活動）：深灰漸層 */
+    .item-neutral {
+      background: linear-gradient(135deg, #2a2d3a 0%, #383c4c 45%, #454a5e 100%);
+    }
+    /* Dinner 行程：深灰漸層 */
+    .item-dinner {
+      background: linear-gradient(135deg, #1c1e24 0%, #2e313d 45%, #454a5e 100%);
+    }
+
+    /* 卡片時間標頭 */
+    .card-time {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 12px;
+    }
+    .card-time i {
+      font-size: 18px;
+      opacity: 0.85;
+    }
+    .card-time .meal-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .card-time.dinner {
+      color: #ffd54f;
+    }
+
+    .activity-block {
+      position: relative;
+      z-index: 1;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .activity-block:first-of-type {
+      padding-top: 0;
+      border-top: none;
+    }
+    .activity-block + .activity-block {
+      margin-top: 10px;
+    }
+
+    .activity-text {
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .activity-text.solo {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .activity-address {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 20px;
+      color: #ffd54f;
+      line-height: 1.65;
+      word-break: break-word;
+      opacity: 0.95;
+    }
+    .activity-address i {
+      width: 14px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.9;
+      font-size: 13px;
+    }
+
+    .activity-text a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .activity-text a:hover {
+      color: #ffd54f;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="home-link" title="返回首頁" aria-label="返回首頁">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  </a>
+  <main class="page-container">
+    <div class="page-title-wrap"><h1 class="page-title">活動流程</h1></div>
+    <div class="page-tip">2026 第14屆全國EMBA馬拉松校園接力賽</div>
+    <h2 class="section-title date-sg">12/6（日）賽事活動流程</h2>
+    <div class="contact-list">
+      <article class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>04:00</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">工作人員集合</h3>
+        </div>
+      </article>
+      <article class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>05:00–05:30</div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜攤位陸續進駐</span></div></div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>05:30–06:20</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">選手集結與報到</h3>
+          <div class="activity-text">選手領取物資、各校集合、掌旗手領旗</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>06:20–06:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">開幕進場準備</h3>
+          <div class="activity-text">各校隊伍整隊，按序排定跑場順序</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>06:30–07:00</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">各校進場儀式</h3>
+          <div class="activity-text">掌旗繞場一圈，集結於司令台前</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜現場攝影</span></div></div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:00–07:15</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">開幕典禮貴賓致詞</h3>
+          <div class="activity-text">3 位重要貴賓致詞（每位預計 3–5 分鐘）</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:15–07:20</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">裁判長宣告</h3>
+          <div class="activity-text">裁判長宣告規則及賽會正式開始</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:20–07:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">大會操／暖身</h3>
+          <div class="activity-text">專業教練帶領各校隊伍同步暖身</div>
+        </div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">A 組（全馬）起跑</h3>
+          <div class="activity-text">07:30 準時發槍起跑</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜園遊會正式開始</span></div></div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:35</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">B/C/D 起跑</h3>
+          <div class="activity-text">半馬、樂齡、新生代組出發</div>
+        </div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>07:40</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">E 組起跑</h3>
+          <div class="activity-text">歡樂友誼組出發</div>
+        </div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>09:00–10:00</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">賽事高峰期</h3>
+          <div class="activity-text">半馬各組最速隊伍預計完賽</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜完賽禮兌換、特色餐點</span></div></div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>09:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">F/G 組起跑</h3>
+          <div class="activity-text">共融組及傳承預備組選手出發</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>09:45–10:15</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">第一階段頒獎</h3>
+          <div class="activity-text">頒發 B、C、D 組獎項及特殊獎</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜互動遊戲／社團表演</span></div></div>
+      </article>
+      <article class="contact-card item-th">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>10:45–11:20</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">全馬完賽高峰</h3>
+          <div class="activity-text">A 組菁英隊伍陸續回場</div>
+        </div>
+      </article>
+      <article class="contact-card item-sg">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>11:00–11:20</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">第二階段頒獎</h3>
+          <div class="activity-text">頒發 A 組、特色獎、歡樂獎、總錦標</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜園遊會最後巡禮</span></div></div>
+      </article>
+      <article class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>11:20–11:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">園遊閉幕</h3>
+          <div class="activity-text">全體大合照、珍重再見</div>
+        </div>
+      </article>
+      <article class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-regular fa-clock" aria-hidden="true"></i>11:30</div>
+        <div class="activity-block">
+          <h3 class="activity-text" style="margin-top:0;font-weight:700">活動圓滿結束</h3>
+          <div class="activity-text">各校校車離開</div>
+        </div>
+        <div class="activity-block"><div class="activity-address"><span>園遊會與周邊活動｜攤位撤收、場地復原</span></div></div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>
+

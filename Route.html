@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>比賽路線｜東華全E馬</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(135deg, #f0f4ff 0%, #dce8ff 100%);
+            min-height: 100vh;
+            color: #16223f;
+        }
+        .page-header {
+            background: linear-gradient(135deg, #1565c0 0%, #1976d2 60%, #42a5f5 100%);
+            padding: 20px 20px 20px 72px;
+            box-shadow: 0 3px 12px rgba(21,101,192,0.35);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .title {
+            font-size: clamp(15pt, 4.5vw, 20pt);
+            color: #fff;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .subtitle-line { color: #e3f0ff; font-size: 10pt; margin-top: 4px; letter-spacing: 0.5px; }
+        .home-link {
+            position: fixed;
+            top: 12px;
+            left: 12px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s ease;
+        }
+        .home-link:hover { transform: scale(1.1); }
+        .home-link svg { width: 26px; height: 26px; fill: #1565c0; }
+        .page-container { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+        .section-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(21,101,192,0.10), 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .section-card + .section-card { margin-top: 24px; }
+        .section-header {
+            background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+            color: #fff;
+            font-size: 20pt;
+            font-weight: 800;
+            padding: 12px 18px;
+            margin: 0;
+            letter-spacing: 1.5px;
+        }
+        .section-body { padding: 18px 18px 22px; }
+        .map-hint {
+            background: #e8f0fe;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin: 0 0 16px;
+            color: #0d2b5e;
+            font-size: 13pt;
+            line-height: 1.7;
+        }
+        .map-wrap { margin: 0; background: #f4f8ff; border-radius: 12px; overflow: hidden; }
+        /* 僅以 CSS 縮小顯示，保留原始 JPG，讓瀏覽器原生縮放讀取圖片細節。 */
+        .route-map { display: block; width: 100%; height: auto; }
+        .map-caption { text-align: center; font-size: 12pt; color: #5a7bab; padding: 12px; line-height: 1.6; }
+        .original-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: #1565c0;
+            color: #fff;
+            font-size: 13pt;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .original-link:hover { background: #0d47a1; }
+        a:focus-visible { outline: 3px solid #ffca28; outline-offset: 3px; }
+        @media (max-width: 600px) {
+            .page-header { padding: 16px 16px 16px 64px; }
+            .home-link { top: 10px; left: 10px; width: 44px; height: 44px; }
+            .home-link svg { width: 22px; height: 22px; }
+            .section-body { padding: 14px 12px 18px; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="home-link" title="返回首頁" aria-label="返回首頁">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </a>
+    <header class="page-header">
+        <h1 class="title">比賽路線</h1>
+        <div class="subtitle-line">東華全E馬｜校園及比賽路線圖</div>
+    </header>
+    <main class="page-container">
+        <section class="section-card" aria-labelledby="route-heading">
+            <h2 class="section-header" id="route-heading">🏃 比賽路線圖</h2>
+            <div class="section-body">
+                <p class="map-hint">手機可用雙指張開放大、捏合縮小，放大後拖曳查看路線細節。也可點選下方「開啟原圖」查看。</p>
+                <figure class="map-wrap">
+                    <img class="route-map" src="比賽路線.jpg" alt="東華全E馬比賽路線圖，可放大查看校園道路與路線標示">
+                    <figcaption class="map-caption">東華校園及比賽路線圖</figcaption>
+                </figure>
+                <a class="original-link" href="比賽路線.jpg" target="_blank" rel="noopener">開啟原圖 ↗</a>
+            </div>
+        </section>
+        <section class="section-card" aria-labelledby="campus-heading">
+            <h2 class="section-header" id="campus-heading">🗺️ 東華大學校園地圖</h2>
+            <div class="section-body">
+                <p class="map-hint">手機可用雙指縮放查看校園地圖，也可點選下方「開啟原圖」查看細節。</p>
+                <figure class="map-wrap">
+                    <img class="route-map" src="NDHU map.jpg" alt="國立東華大學校園地圖，可放大查看校園位置與道路" loading="lazy">
+                    <figcaption class="map-caption">國立東華大學校園地圖</figcaption>
+                </figure>
+                <a class="original-link" href="NDHU map.jpg" target="_blank" rel="noopener">開啟原圖 ↗</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

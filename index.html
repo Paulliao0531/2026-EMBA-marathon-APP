@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>中央EMBA 2026海外參訪星泰團 Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+    }
+
+    body {
+      background: #0a0e1a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    /* ── Ambient glow background ── */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #141827 0%, #1a1f35 100%);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f97316, #ec4899, #3b82f6, #06b6d4);
+    }
+
+    .hero-logo {
+      flex-shrink: 0;
+      width: 140px;
+    }
+
+    .logo {
+      width: 100%;
+      display: block;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f1f5f9;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .info-card {
+      margin-top: 0;
+      padding: 16px 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.85) 0%, rgba(236,72,153,0.85) 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .info-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.9;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Section Title ── */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #94a3b8;
+      padding-left: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #c8960c, #a0510a, #7a1010, transparent);
+    }
+
+    /* ── Menu Grid ── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .menu-btn {
+      background: linear-gradient(160deg, #1e2540 0%, #141827 60%, #0f1220 100%);
+      border-radius: 18px;
+      padding: 22px 16px;
+      text-decoration: none;
+      color: #e2e8f0;
+      box-shadow:
+        0 2px 0 rgba(255,255,255,0.06) inset,
+        0 -1px 0 rgba(0,0,0,0.6) inset,
+        1px 0 0 rgba(255,255,255,0.04) inset,
+        6px 8px 20px rgba(0,0,0,0.55),
+        2px 3px 6px rgba(0,0,0,0.4),
+        0 1px 0 rgba(255,255,255,0.04);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      min-height: 110px;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      border-left: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(0,0,0,0.5);
+    }
+
+    .menu-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ec4899, #3b82f6);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .menu-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.07), rgba(59,130,246,0.07));
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow:
+        0 2px 0 rgba(255,255,255,0.08) inset,
+        0 -1px 0 rgba(0,0,0,0.6) inset,
+        1px 0 0 rgba(255,255,255,0.05) inset,
+        10px 16px 32px rgba(0,0,0,0.65),
+        4px 6px 12px rgba(0,0,0,0.45),
+        0 0 0 1px rgba(249,115,22,0.2);
+    }
+
+    .menu-btn:hover::before {
+      opacity: 1;
+    }
+
+    .menu-btn:hover::after {
+      opacity: 1;
+    }
+
+    .menu-btn:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.04) inset,
+        0 -2px 4px rgba(0,0,0,0.5) inset,
+        2px 3px 8px rgba(0,0,0,0.4);
+    }
+
+    .menu-btn:hover .menu-title {
+      color: #f8fafc;
+    }
+
+    .menu-btn:hover .menu-icon {
+      color: #fb923c;
+    }
+
+    .menu-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f1f5f9;
+      transition: color 0.25s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-icon {
+      font-size: 18px;
+      color: #64748b;
+      transition: color 0.25s ease;
+    }
+
+    .menu-desc {
+      font-size: 16px;
+      color: #64748b;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #334155;
+      line-height: 1.8;
+    }
+
+    /* ── Tablet ── */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 16px 48px;
+      }
+
+      .hero {
+        gap: 16px;
+        padding: 24px 20px;
+      }
+
+      .hero-top {
+        gap: 16px;
+      }
+
+      .hero-logo {
+        width: 90px;
+      }
+
+      .title {
+        font-size: 28px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 420px) {
+      .title {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .info-card h3 {
+        font-size: 14px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .menu-btn {
+        min-height: 110px;
+        padding: 20px 14px;
+      }
+
+      .menu-title {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="hero-top">
+        <div class="hero-logo">
+          <img src="松鼠.png" alt="Young跑社Logo" class="logo">
+        </div>
+        <div class="hero-content">
+          <div class="title">2026 中央EMBA 花蓮全E馬</div>
+          <div class="subtitle">
+            2026 第14屆全國EMBA馬拉松校園接力賽<br>
+            世代傳承 × 共融永續
+          </div>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>重要資訊：<br>
+          賽事日期：2026 年 12 月 6 日（星期日）<br>
+          賽事地點：國立東華大學田徑場及其校內周邊道路<br>
+        </h3>
+      </div>
+    </div>
+
+    <div class="section-title">功能選單</div>
+
+    <div class="menu-grid">
+      <a class="menu-btn" href="Agenda.html">
+        <div class="menu-title"><i class="fa-solid fa-calendar-days menu-icon"></i> 活動流程</div>
+        <div class="menu-desc">賽事時間、大會流程與周邊活動</div>
+      </a>
+
+      <a class="menu-btn" href="Route.html">
+        <div class="menu-title"><i class="fa-solid fa-map-location-dot menu-icon"></i> 比賽路線</div>
+        <div class="menu-desc">東華校園及比賽路線圖</div>
+      </a>
+
+      <a class="menu-btn" href="Construction.html">
+        <div class="menu-title"><i class="fa-solid fa-utensils menu-icon"></i> 餐廳</div>
+        <div class="menu-desc">聚餐地點</div>
+      </a>
+
+      <a class="menu-btn" href="Hotels.html">
+        <div class="menu-title"><i class="fa-solid fa-hotel menu-icon"></i> 住宿</div>
+        <div class="menu-desc">房間分配</div>
+      </a>
+
+      <a class="menu-btn" href="Members.html">
+        <div class="menu-title"><i class="fa-solid fa-users menu-icon"></i> 工作分配</div>
+        <div class="menu-desc">活動中配合事項</div>
+      </a>
+
+      <a class="menu-btn" href="Reference.html">
+        <div class="menu-title"><i class="fa-solid fa-circle-info menu-icon"></i> 其他資訊</div>
+        <div class="menu-desc">備註事項</div>
+      </a>
+    </div>
+
+    <div class="footer">
+      2026 National Central University EMBA Overseas Visit Portal<br>
+      Designed for Mobile Experience
+    </div>
+  </div>
+</body>
+</html>
+
