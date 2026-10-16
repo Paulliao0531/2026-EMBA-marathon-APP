@@ -78,21 +78,6 @@
         /* 僅以 CSS 縮小顯示，保留原始 JPG，讓瀏覽器原生縮放讀取圖片細節。 */
         .route-map { display: block; width: 100%; height: auto; }
         .map-caption { text-align: center; font-size: 12pt; color: #5a7bab; padding: 12px; line-height: 1.6; }
-        .original-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 48px;
-            margin-top: 16px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: #1565c0;
-            color: #fff;
-            font-size: 13pt;
-            font-weight: 700;
-            text-decoration: none;
-        }
-        .original-link:hover { background: #0d47a1; }
         a:focus-visible { outline: 3px solid #ffca28; outline-offset: 3px; }
         @media (max-width: 600px) {
             .page-header { padding: 16px 16px 16px 64px; }
@@ -114,23 +99,21 @@
         <section class="section-card" aria-labelledby="route-heading">
             <h2 class="section-header" id="route-heading">🏃 比賽路線圖</h2>
             <div class="section-body">
-                <p class="map-hint">手機可用雙指張開放大、捏合縮小，放大後拖曳查看路線細節。也可點選下方「開啟原圖」查看。</p>
+                <p class="map-hint">手機可用雙指張開放大、捏合縮小，放大後拖曳查看路線細節。</p>
                 <figure class="map-wrap">
                     <img class="route-map" src="比賽路線.jpg" alt="東華全E馬比賽路線圖，可放大查看校園道路與路線標示">
                     <figcaption class="map-caption">東華校園及比賽路線圖</figcaption>
                 </figure>
-                <a class="original-link" href="比賽路線.jpg" target="_blank" rel="noopener">開啟原圖 ↗</a>
             </div>
         </section>
         <section class="section-card" aria-labelledby="campus-heading">
             <h2 class="section-header" id="campus-heading">🗺️ 東華大學校園地圖</h2>
             <div class="section-body">
-                <p class="map-hint">手機可用雙指縮放查看校園地圖，也可點選下方「開啟原圖」查看細節。</p>
+                <p class="map-hint">手機可用雙指縮放查看校園地圖細節。</p>
                 <figure class="map-wrap">
                     <img class="route-map" src="NDHU map.jpg" alt="國立東華大學校園地圖，可放大查看校園位置與道路" loading="lazy">
                     <figcaption class="map-caption">國立東華大學校園地圖</figcaption>
                 </figure>
-                <a class="original-link" href="NDHU map.jpg" target="_blank" rel="noopener">開啟原圖 ↗</a>
             </div>
         </section>
     </main>
