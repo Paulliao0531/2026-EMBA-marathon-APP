@@ -1,0 +1,31 @@
+{
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "theme_color": "#0f1117",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "type": "image/png",
+      "purpose": "any",
+      "sizes": "192x192",
+      "src": "icon-192.png"
+    },
+    {
+      "type": "image/png",
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "icon-512.png"
+    },
+    {
+      "type": "image/png",
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "icon-maskable-512.png"
+    }
+  ],
+  "name": "中央EMBA 2026 花蓮全E馬",
+  "short_name": "全E馬",
+  "background_color": "#0f1117",
+  "display": "standalone"
+}
