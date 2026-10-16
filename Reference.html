@@ -22,6 +22,10 @@
     .title-icon { display: inline-block; margin-right: .25em; font-style: normal; color: #ffd76a; -webkit-text-fill-color: #ffd76a; }
     a:focus-visible { outline: 3px solid #ffca28; outline-offset: 4px; }
     @media (max-width: 380px) { .page-title { font-size: 30px; } .tips { font-size: 20px; } }
+      /* 每項自動顯示跑鞋；新增事項仍只需加入 <li>內容</li>。 */
+    .tips { list-style: none; padding-left: 0; }
+    .tips li { position: relative; padding-left: 1.9em; }
+    .tips li::before { content: "👟"; position: absolute; left: 0; top: 0; width: 1.5em; text-align: center; font-size: 1em; line-height: inherit; }
   </style>
 </head>
 <body>
