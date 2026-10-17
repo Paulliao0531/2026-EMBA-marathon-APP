@@ -64,7 +64,7 @@
     /* 頁面標題 */
     .page-title-wrap {
       text-align: center;
-      margin-bottom: 6px;
+      margin-bottom: 20px;
     }
     .page-title {
       display: inline-block;
@@ -80,16 +80,16 @@
     }
     .hotel-tip {
       font-size: 20px;
-      color: #ffe600;
+      color: #fff;
       text-align: center;
-      margin-bottom: 28px;
+      margin: 8px 0 0;
     }
 
     /* 飯店區塊 */
     .hotel-section {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
       margin-bottom: 36px;
     }
 
@@ -260,9 +260,10 @@
       color: transparent;
     }
     .hotel-image { flex-shrink: 0; }
-    .address-link { display: inline-block; min-height: 44px; padding: 6px 0; color: inherit; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
-    .address-link:hover { color: #fff; }
+    .address-link { display: inline-block; min-height: 44px; padding: 6px 0; color: #fff2a8; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .address-link:hover { color: #fff2a8; }
     a:focus-visible { outline: 3px solid #ffca28; outline-offset: 4px; }
+    .location-icon { display: inline-block; width: 1.3em; height: 1.3em; margin-right: .3em; vertical-align: -.3em; object-fit: contain; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -277,7 +278,7 @@
     <div class="page-title-wrap">
       <h1 class="page-title">Hotels</h1>
     </div>
-    <div class="hotel-tip">點擊地址可開啟 Google Maps</div>
+
 
     <div class="hotel-section">
 
@@ -291,13 +292,14 @@
           <div class="hotel-info">
             <h2 class="hotel-name">花蓮阿思瑪麗景大飯店</h2>
             <p class="hotel-details">
-              <a class="address-link" href="https://maps.app.goo.gl/j2DvN8156WkJwUnr6" target="_blank" rel="noopener noreferrer" title="帶我去阿思瑪（另開視窗）">花蓮縣花蓮市主商里博愛街68號</a><br>
+              <a class="address-link" href="https://maps.app.goo.gl/j2DvN8156WkJwUnr6" target="_blank" rel="noopener noreferrer" title="帶我去阿思瑪（另開視窗）"><img class="location-icon" src="google-maps-icon.png" width="26" height="26" alt="" aria-hidden="true">花蓮縣花蓮市主商里博愛街68號</a><br>
               TEL : 03 832 9555
             </p>
+
           </div>
         </div>
       </div>
-
+      <p class="hotel-tip">點擊地址可開啟 Google Maps</p>
     </div>
 
     <hr class="section-divider">
