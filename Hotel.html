@@ -259,6 +259,10 @@
       box-shadow: none;
       color: transparent;
     }
+    .hotel-image { flex-shrink: 0; }
+    .address-link { display: inline-block; min-height: 44px; padding: 6px 0; color: inherit; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+    .address-link:hover { color: #fff; }
+    a:focus-visible { outline: 3px solid #ffca28; outline-offset: 4px; }
   </style>
 </head>
 <body>
@@ -273,7 +277,7 @@
     <div class="page-title-wrap">
       <h1 class="page-title">Hotels</h1>
     </div>
-    <div class="hotel-tip">點擊人物圖示可進入Google Map</div>
+    <div class="hotel-tip">點擊地址可開啟 Google Maps</div>
 
     <div class="hotel-section">
 
@@ -283,13 +287,11 @@
           <span class="card-header-label">歡迎來花蓮</span>
         </div>
         <div class="card-body">
-          <a href="https://maps.app.goo.gl/j2DvN8156WkJwUnr6" target="_blank" class="hotel-link" title="帶我去阿思瑪">
-            <img class="hotel-icon" src="amis.webp?v=4957674" alt="飯店圖示">
-          </a>
+          <div class="hotel-image"><img class="hotel-icon" src="amis.webp?v=4957674" alt="飯店圖示"></div>
           <div class="hotel-info">
             <h2 class="hotel-name">花蓮阿思瑪麗景大飯店</h2>
             <p class="hotel-details">
-              花蓮縣花蓮市主商里博愛街68號<br>
+              <a class="address-link" href="https://maps.app.goo.gl/j2DvN8156WkJwUnr6" target="_blank" rel="noopener noreferrer" title="帶我去阿思瑪（另開視窗）">花蓮縣花蓮市主商里博愛街68號</a><br>
               TEL : 03 832 9555
             </p>
           </div>

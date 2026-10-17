@@ -33,8 +33,8 @@
 </main>
 <script>
 const groups=[
-{code:'D',title:'D組｜新火・未來戰隊',sub:'在校／半馬',teams:[['D1','彭淑美','蔡佩娟','邱宜姿','黃姿瑛','楊琇茹'],['D2','陳秋燕','余岳隆','侯志孟','唐文彬','劉逢志'],['D3','袁淑瑩','鍾曜宇','白欽全','廖聰志','連敏傑']]},
-{code:'E',title:'E組｜逐光・自由',sub:'歡樂友誼組',teams:[['E1','陳春希 教授','蕭雯方','何怡憓','楊婉萍','邱姿云'],['E2','黃子恩','江秋汶','吳姿儀','胡雅婷','趙碧珠'],['E3','姜玫君','郭昱志','劉志城','陳立偉','蔡名章'],['E4','邱俊榮 教授','賴勝裕','王宗奕','黃國朝','林玉權'],['E5','簡維毅','林俊宏','陳信龍','吳嘉泓','謝錦淵'],['E6','郭天立','于耀琪','曾世翰','陳瑩書','王法睿']]},
+{code:'D',title:'D組｜新火・未來戰隊',sub:'在校／半馬',teams:[['D1 - 中央膝跪妃','彭淑美','蔡佩娟','邱宜姿','黃姿瑛','楊琇茹'],['D2 - 中央腿常在','陳秋燕','余岳隆','侯志孟','唐文彬','劉逢志'],['D3 - 中央走甲飛','袁淑瑩','鍾曜宇','白欽全','廖聰志','連敏傑']]},
+{code:'E',title:'E組｜逐光・自由',sub:'歡樂友誼組',teams:[['E1 - 中央女力夯','陳春希 教授','蕭雯方','何怡憓','楊婉萍','邱姿云'],['E2 - 中央女王瘋','黃子恩','江秋汶','吳姿儀','胡雅婷','趙碧珠'],['E3 - 中央隔壁隊','姜玫君','郭昱志','劉志城','陳立偉','蔡名章'],['E4 - 中央道不同','邱俊榮 教授','賴勝裕','王宗奕','黃國朝','林玉權'],['E5 - 中央自在跑','簡維毅','林俊宏','陳信龍','吳嘉泓','謝錦淵'],['E6 - 中央馬拉糕','郭天立','于耀琪','曾世翰','陳瑩書','王法睿']]},
 {code:'G',title:'G組｜星盾・守護',sub:'傳承預備組',teams:[['G','簡雅惠','許順智']]}
 ];
 const target=document.getElementById('teams');
@@ -43,7 +43,7 @@ for(const group of groups){
  const heading=document.createElement('h2');heading.className='section-title';heading.textContent=group.title;section.append(heading);
  const sub=document.createElement('p');sub.className='group-sub';sub.textContent=group.sub;section.append(sub);
  const list=document.createElement('div');list.className='team-list';
- for(const [team,...names] of group.teams){const card=document.createElement('article');card.className='team-card';const title=document.createElement('h3');title.textContent=team+' 隊';card.append(title);const runners=document.createElement('ol');runners.className='runners';names.forEach((name,index)=>{const row=document.createElement('li');const leg=document.createElement('span');leg.className='leg';leg.textContent=group.code==='G'?'':'第'+(index+1)+'棒';const person=document.createElement('span');person.className='name';person.textContent=name;row.append(leg,person);runners.append(row)});card.append(runners);list.append(card)}
+ for(const [team,...names] of group.teams){const card=document.createElement('article');card.className='team-card';const title=document.createElement('h3');title.textContent=team+'';card.append(title);const runners=document.createElement('ol');runners.className='runners';names.forEach((name,index)=>{const row=document.createElement('li');const leg=document.createElement('span');leg.className='leg';leg.textContent=group.code==='G'?'':'第'+(index+1)+'棒';const person=document.createElement('span');person.className='name';person.textContent=name;row.append(leg,person);runners.append(row)});card.append(runners);list.append(card)}
  section.append(list);target.append(section);
 }
 </script>
