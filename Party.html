@@ -10,7 +10,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
   <title>Party｜2026 全E馬</title>
+  <link rel="preload" as="image" href="dance.webp" fetchpriority="high">
+  <script>
+    document.documentElement.classList.add('party-loading');
+    window.partyRevealTimer = setTimeout(function () {
+      document.documentElement.classList.remove('party-loading');
+    }, 4000);
+  </script>
   <style>
+    html.party-loading body { visibility: hidden; }
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -277,7 +285,7 @@
       <div class="hotel-card thailand-card">
         <div class="card-header"><span class="card-header-label">2026 全E馬選手之夜</span></div>
         <div class="card-body">
-          <img class="hotel-icon" src="dance.webp" width="960" height="640" decoding="async" alt="選手之夜">
+          <img class="hotel-icon" src="dance.webp" width="960" height="640" loading="eager" fetchpriority="high" decoding="sync" alt="選手之夜">
           <div class="hotel-info">
             <!-- 在這裡修改場所名稱與地址。 -->
             <h2 class="hotel-name">活動地點</h2>
@@ -297,5 +305,22 @@
       </ul>
     </section>
   </main>
+  <script>
+    (function () {
+      var image = document.querySelector('.hotel-icon');
+      function reveal() {
+        clearTimeout(window.partyRevealTimer);
+        document.documentElement.classList.remove('party-loading');
+      }
+      if (image.decode) {
+        image.decode().then(reveal, reveal);
+      } else if (image.complete) {
+        reveal();
+      } else {
+        image.addEventListener('load', reveal, { once: true });
+        image.addEventListener('error', reveal, { once: true });
+      }
+    }());
+  </script>
 </body>
 </html>
