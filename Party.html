@@ -11,14 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
   <title>Party｜2026 全E馬</title>
   <link rel="preload" as="image" href="dance.webp" fetchpriority="high">
-  <script>
-    document.documentElement.classList.add('party-loading');
-    window.partyRevealTimer = setTimeout(function () {
-      document.documentElement.classList.remove('party-loading');
-    }, 4000);
-  </script>
-  <style>
-    html.party-loading body { visibility: hidden; }
+<style>
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -272,7 +265,13 @@
     a:focus-visible { outline: 3px solid #ffca28; outline-offset: 4px; }
     @media (max-width: 380px) { .tips { font-size: 20px; } .card-body { padding: 8px 8px 20px; } }
     .location-icon { display: inline-block; width: 1.3em; height: 1.3em; margin-right: .3em; vertical-align: -.3em; object-fit: contain; flex-shrink: 0; }
+    /* Inline preview appears immediately; the full image replaces it after decoding. */
+    .progressive-image { background-position: center; background-repeat: no-repeat; background-size: contain; }
+    .progressive-image > img { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
+    .progressive-image.is-ready { background-image: none !important; }
+    .progressive-image.is-ready > img { opacity: 1; }
   </style>
+  <noscript><style>.progressive-image { background-image: none !important; } .progressive-image > img { opacity: 1; }</style></noscript>
 </head>
 <body>
   <a href="index.html" class="floating-home-link" title="返回首頁" aria-label="返回首頁">
@@ -285,7 +284,7 @@
       <div class="hotel-card thailand-card">
         <div class="card-header"><span class="card-header-label">2026 全E馬選手之夜</span></div>
         <div class="card-body">
-          <img class="hotel-icon" src="dance.webp" width="960" height="640" loading="eager" fetchpriority="high" decoding="sync" alt="選手之夜">
+          <div class="hotel-icon progressive-image" style="background-image: url('data:image/webp;base64,UklGRtABAABXRUJQVlA4IMQBAACQCQCdASowABwAPvFkqE6ppaOiNVv4ATAeCWwAnTLKZoStYpzqNcxvmIjm0Cxu9QSWLpRT9RoFa/ZdOpd9SQTAJhtO/Mx6JJOuJZz3OH4TpmR/bzgAAP7r7/4nrwlGIHCRrYxVkUwX3uqScky4GTZgsahUD2RL0wQdw/JyicNZb6dXyefiCZzgRAHMy3pVdhtj+BOrzV8e+Dq6FOBGKOvwZb9gLrUtFA56u+QNx9Wh7lXQ71yJGLfECddSZb7XHWNDKKdbccVU4BTFOLs8u4Fj2etXR/rM2I//HrNdb/gel4OWirDjZP2d9VUunP5qffx1bW5abCatypkPEsHeVFBiwxMOo7mLCnOSrL977zvPtxTCvy12pIWNJS9TjAFMsf1Q3Hl75dfrrunYg+UNYcILbwmxtN2zp4OTXvFZhpS8BvdnB9QuWAXCofEWpthHREQp0Kl/eLEGPtX9iNwJZnt2ukkpGppC64O0Psr+RaUCqoKAHJ97HQw8ceU6s8Oee/6Sd9XQ9nQC11iLWPrBuCEc3qzmdcOd0A7nTGi2a+SFKuL2VEBl5nS0vQV8v1JiK5cR0DPn+Zt+RKjnkAbU1CiAbBIAAA==')"><img src="dance.webp" width="960" height="553" loading="eager" fetchpriority="high" decoding="async" alt="選手之夜"></div>
           <div class="hotel-info">
             <!-- 在這裡修改場所名稱與地址。 -->
             <h2 class="hotel-name">活動地點</h2>
@@ -306,21 +305,18 @@
     </section>
   </main>
   <script>
-    (function () {
-      var image = document.querySelector('.hotel-icon');
-      function reveal() {
-        clearTimeout(window.partyRevealTimer);
-        document.documentElement.classList.remove('party-loading');
+    document.querySelectorAll('.progressive-image').forEach(function (frame) {
+      var image = frame.querySelector('img');
+      function showFullImage() {
+        if (image.naturalWidth) frame.classList.add('is-ready');
       }
-      if (image.decode) {
-        image.decode().then(reveal, reveal);
-      } else if (image.complete) {
-        reveal();
-      } else {
-        image.addEventListener('load', reveal, { once: true });
-        image.addEventListener('error', reveal, { once: true });
+      function prepareImage() {
+        if (image.decode) image.decode().then(showFullImage, function () {});
+        else showFullImage();
       }
-    }());
+      image.addEventListener('load', prepareImage, { once: true });
+      if (image.complete && image.naturalWidth) prepareImage();
+    });
   </script>
 </body>
 </html>
