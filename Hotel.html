@@ -10,7 +10,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
   <title>Hotels & Accommodations</title>
+  <link rel="preload" as="image" href="amis.webp?v=4957674" fetchpriority="high">
+  <script>
+    document.documentElement.classList.add('hotel-loading');
+    window.hotelRevealTimer = setTimeout(function () {
+      document.documentElement.classList.remove('hotel-loading');
+    }, 4000);
+  </script>
   <style>
+    html.hotel-loading body { visibility: hidden; }
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -288,7 +296,7 @@
           <span class="card-header-label">歡迎來花蓮</span>
         </div>
         <div class="card-body">
-          <div class="hotel-image"><img class="hotel-icon" src="amis.webp?v=4957674" alt="飯店圖示"></div>
+          <div class="hotel-image"><img class="hotel-icon" src="amis.webp?v=4957674" width="150" height="225" loading="eager" fetchpriority="high" decoding="sync" alt="飯店圖示"></div>
           <div class="hotel-info">
             <h2 class="hotel-name">花蓮阿思瑪麗景大飯店</h2>
             <p class="hotel-details">
@@ -310,5 +318,22 @@
       <div class="roster-cell">TBD</div>
 
   </div>
+  <script>
+    (function () {
+      var image = document.querySelector('.hotel-icon');
+      function reveal() {
+        clearTimeout(window.hotelRevealTimer);
+        document.documentElement.classList.remove('hotel-loading');
+      }
+      if (image.decode) {
+        image.decode().then(reveal, reveal);
+      } else if (image.complete) {
+        reveal();
+      } else {
+        image.addEventListener('load', reveal, { once: true });
+        image.addEventListener('error', reveal, { once: true });
+      }
+    }());
+  </script>
 </body>
 </html>
