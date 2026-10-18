@@ -10,6 +10,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026 全E馬 Portal</title>
+  <link rel="preload" as="image" href="松鼠.webp" fetchpriority="high">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     * {
@@ -341,14 +342,20 @@
         font-size: 17px;
       }
     }
+    /* Inline preview keeps the logo visible while the full image loads. */
+    .progressive-image { background-position: center; background-repeat: no-repeat; background-size: contain; }
+    .progressive-image > img { display: block; width: 100%; height: auto; opacity: 0; }
+    .progressive-image.is-ready { background-image: none !important; }
+    .progressive-image.is-ready > img { opacity: 1; }
   </style>
+  <noscript><style>.progressive-image { background-image: none !important; } .progressive-image > img { opacity: 1; }</style></noscript>
 </head>
 <body>
   <div class="container">
     <div class="hero">
       <div class="hero-top">
         <div class="hero-logo">
-          <img src="松鼠.png" alt="Young跑社Logo" class="logo">
+          <div class="logo progressive-image" style="background-image: url('data:image/webp;base64,UklGRt4CAABXRUJQVlA4WAoAAAAQAAAAIgAAJwAAQUxQSIMBAAABkGzbtmk789k2Y9u2bTsp2UbNtm3btm3btpM9C2efjT+IiAmAq0cauPa8VRiGi78qJ0v7gbdiDS3k/sDEbNnjvUeRnGom8iX/X//w+8+7S99Ivo0xUkBQvTiAwCCN4M1U/1e01NQj9+7vHZpJZSY1vx8XlH4c7uuS8ZuO8iJvWR/a7CHbYeV5rCPylRV2cJQWdpYBKHSTds8CYTdp+TxQg7anAz2sVQXa2joaAGT4audFHgAYZm7bsFVDMwGo277MZmNNIG0r+K9F+3vCyJ9csmskL9XrdOG/icuQ36ZU0OTVWukleTb8cJj+Ms8LzqIXLFDkkiBswD0zj36TvzPJgLjGc37qvUyd+PPJfE83AFe1vteCX9ZQKAfe1+oP/bgPWm+O5NMq+0eLfBCt1n7mLZrsrRK+koZPeyl0oulvaRU6qnyft+GbAisqRN5zO1QIyDH1qVtZBdQREjHKD87Iyu1r7yT/DvNVwWjJJQ8o+hftWAHqnqP+kOwMy9XXXx3vZwwAVlA4IDQBAADwCACdASojACgAPwFurFArJqQirjgLMWAgCWwAs7mN2d52kKsbiqbRayUGM0MmVw22UupXf5/glRO3CrBsTOfU2VdtI6p2LSmhbCRvjlh2AAD52Er3Tbw0brWyuogH5iQ8EKqcNAONZVR4W+XFD/watsxBwVZqO6Ry4w7t2+nVy6aBaXy4xBLeL2s2T0lTFV1LryVjrTBF+Gymd/X+gTztPhYdV+dLfKZoy8gEY0rxQZiV0JfHKjCP/x6fBCncPDQzWKEX8zIj3aHDP2tZJmuCopSNMzCRPlvnUmzwY95xorYDBYEH8pKs4jVtD3hSl99ICXdtTvWJHbfSm/nVZizh+Qh81k+Aj3DrwH8G6OFrLQ6w6tSqBlYKeMd/r0su4dLTh5ksOvqjHnpYrHS3Thc9AAAAAA==')"><img src="松鼠.webp" width="347" height="400" alt="Young跑社Logo" loading="eager" fetchpriority="high" decoding="async"></div>
         </div>
         <div class="hero-content">
           <div class="title">中央EMBA<br>
@@ -420,5 +427,19 @@
       Designed for Mobile Experience
     </div>
   </div>
+  <script>
+    document.querySelectorAll('.progressive-image').forEach(function (frame) {
+      var image = frame.querySelector('img');
+      function showFullImage() {
+        if (image.naturalWidth) frame.classList.add('is-ready');
+      }
+      function prepareImage() {
+        if (image.decode) image.decode().then(showFullImage, function () {});
+        else showFullImage();
+      }
+      image.addEventListener('load', prepareImage, { once: true });
+      if (image.complete && image.naturalWidth) prepareImage();
+    });
+  </script>
 </body>
 </html>
