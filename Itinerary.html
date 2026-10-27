@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- 手機桌面圖示：iPhone / Android -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-title" content="全E馬">
+  <meta name="theme-color" content="#0f1117">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes">
+  <title>花蓮路跑・山海三日遊｜行程表 Itinerary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      display: block;
+      margin: 0;
+      padding: 0;
+      background-color: #0f1117;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      color: #d0d0d0;
+    }
+
+    /* 懸浮首頁按鈕 */
+    .home-link {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background-color: #1a1d27;
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+    .home-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+    }
+    .home-link svg {
+      width: 26px;
+      height: 26px;
+      fill: #e8a06a;
+      transition: fill 0.2s ease;
+    }
+    .home-link:hover svg {
+      fill: #0076cc;
+    }
+
+    /* 主容器 */
+    .page-container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 80px 16px 48px;
+    }
+
+    /* 頁面標題 */
+    .page-title-wrap {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .page-title {
+      display: inline-block;
+      font-size: 36px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #5b9bd5 0%, #8ec3f0 50%, #5b9bd5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+    }
+    .page-tip {
+      font-size: 16px;
+      color: #666888;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .page-tip { line-height: 1.8; color: #a4a9bf; }
+    .day-theme { display: block; margin-top: 6px; font-size: 18px; font-weight: 400; line-height: 1.5; }
+    .activity-description { position: relative; z-index: 1; margin-top: 8px; color: #e0e5ef; font-size: 16px; line-height: 1.7; }
+
+    /* 日期分區標題 */
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #d0d0d0;
+      margin: 30px 0 14px;
+      padding-left: 12px;
+    }
+    .section-title.date-sg {
+      border-left: 5px solid #0069b4;
+    }
+    .section-title.date-th {
+      border-left: 5px solid #b84a0a;
+    }
+    .section-title.date-neutral {
+      border-left: 5px solid #6a6f85;
+    }
+
+    /* 行程卡片清單 */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* 單張行程卡片 */
+    .contact-card {
+      border-radius: 18px;
+      padding: 20px 22px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    .card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .card-link:hover { transform: translateY(-2px); }
+    .card-link:focus-visible { outline: 3px solid #ffd54f; outline-offset: 4px; }
+
+    /* 光暈裝飾 */
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: 10px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    /* 第一天行程：深藍漸層 */
+    .item-sg {
+      background: linear-gradient(135deg, #002d54 0%, #004f8a 45%, #0069b4 100%);
+    }
+    /* 第二天行程：深橙漸層 */
+    .item-th {
+      background: linear-gradient(135deg, #5a1800 0%, #8c3200 45%, #b84a0a 100%);
+    }
+    /* 第三天行程：深灰漸層 */
+    .item-neutral {
+      background: linear-gradient(135deg, #2a2d3a 0%, #383c4c 45%, #454a5e 100%);
+    }
+    /* Dinner 行程：深灰漸層 */
+    .item-dinner {
+      background: linear-gradient(135deg, #1c1e24 0%, #2e313d 45%, #454a5e 100%);
+    }
+
+    /* 卡片時間標頭 */
+    .card-time {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 12px;
+    }
+    .card-time i {
+      font-size: 18px;
+      opacity: 0.85;
+    }
+    .card-time .meal-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .card-time.dinner {
+      color: #ffd54f;
+    }
+
+    .activity-block {
+      position: relative;
+      z-index: 1;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .activity-block:first-of-type {
+      padding-top: 0;
+      border-top: none;
+    }
+    .activity-block + .activity-block {
+      margin-top: 10px;
+    }
+
+    .activity-text {
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .activity-text.solo {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .activity-address {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 14px;
+      color: #ffd54f;
+      line-height: 1.5;
+      word-break: break-word;
+      opacity: 0.95;
+    }
+    .activity-address i {
+      width: 14px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.9;
+      font-size: 13px;
+    }
+
+    .activity-text a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .activity-text a:hover {
+      color: #ffd54f;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="home-link" title="返回首頁">
+    <svg viewBox="0 0 24 24">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+  </a>
+
+  <div class="page-container">
+
+    <div class="page-title-wrap">
+      <h1 class="page-title">Itinerary</h1>
+    </div>
+    <div class="page-tip">中央 EMBA｜花蓮路跑・山海三日遊<br>2026/12/05 - 12/07・三天兩夜<br>中央大學出發｜東華大學 EMBA 路跑接力</div>
+
+    <h2 class="section-title date-sg">12/05（六）<span class="day-theme">從桃園出發，奔向花蓮</span></h2>
+    <div class="contact-list">
+      <div class="contact-card item-sg">
+        <div class="card-time"><i class="fa-solid fa-bus" aria-hidden="true"></i>07:30</div>
+        <div class="activity-block">
+          <div class="activity-text">中央大學集合出發</div>
+          <div class="activity-description">搭乘遊覽車前往花蓮；車上提供活力早餐與點心。</div>
+        </div>
+      </div>
+      <div class="contact-card item-sg">
+        <div class="card-time"><i class="fa-solid fa-camera" aria-hidden="true"></i>11:00-11:20</div>
+        <div class="activity-block">
+          <div class="activity-text">台泥 DAKA 園區</div>
+          <div class="activity-description">短暫休息、欣賞建築景觀、拍照打卡。</div>
+        </div>
+      </div>
+      <div class="contact-card item-dinner">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>12:00-13:00</div>
+        <div class="activity-block">
+          <div class="activity-text">慶豐年原住民風味料理</div>
+          <div class="activity-description">以在地原民風味菜色迎接花蓮旅程。</div>
+        </div>
+      </div>
+      <div class="contact-card item-sg">
+        <div class="card-time"><i class="fa-solid fa-camera" aria-hidden="true"></i>13:30-15:30</div>
+        <div class="activity-block">
+          <div class="activity-text">天空之鏡・沙灘車體驗</div>
+          <div class="activity-description">海天倒影、沙灘車與團體合照。<br>預定 2 人共乘 1 台，活動約 2 小時。</div>
+        </div>
+      </div>
+      <div class="contact-card item-sg">
+        <div class="card-time"><i class="fa-solid fa-hotel" aria-hidden="true"></i>16:00-16:30</div>
+        <div class="activity-block">
+          <div class="activity-text">阿思瑪麗景大飯店入住</div>
+        </div>
+      </div>
+      <a class="contact-card item-dinner card-link" href="Party.html">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>18:00</div>
+        <div class="activity-block">
+          <div class="activity-text">東大門「選手之夜」</div>
+          <div class="activity-description">自行前往，步行約 5-8 分鐘。</div>
+        </div>
+      </a>
+    </div>
+
+    <h2 class="section-title date-th">12/06（日）<span class="day-theme">跑在花蓮，遊在湖畔</span></h2>
+    <div class="contact-list">
+      <div class="contact-card item-dinner">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>05:00</div>
+        <div class="activity-block">
+          <div class="activity-text">晨光早餐</div>
+          <div class="activity-description">享用早餐、準備參與 EMBA 馬拉松接力活動。</div>
+        </div>
+      </div>
+      <a class="contact-card item-th card-link" href="Agenda.html">
+        <div class="card-time"><i class="fa-solid fa-person-running" aria-hidden="true"></i>06:00-11:00</div>
+        <div class="activity-block">
+          <div class="activity-text">東華大學 EMBA 路跑接力</div>
+          <div class="activity-description">跑過森林步道、湖畔與綠意校園；親友同樂。</div>
+        </div>
+      </a>
+      <a class="contact-card item-dinner card-link" href="Restaurants.html">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>12:00-14:30</div>
+        <div class="activity-block">
+          <div class="activity-text">迷途鯨魚 Lost Whale</div>
+          <div class="activity-description">於壽豐、東華大學附近享用訂製化套餐。<br>賽後放鬆用餐、補充體力。</div>
+        </div>
+      </a>
+      <div class="contact-card item-th">
+        <div class="card-time"><i class="fa-solid fa-ship" aria-hidden="true"></i>15:00-16:30</div>
+        <div class="activity-block">
+          <div class="activity-text">理想 PAARK 水岸遊湖</div>
+          <div class="activity-description">搭船欣賞水岸景色、落羽松與湖光倒影。</div>
+        </div>
+      </div>
+      <div class="contact-card item-dinner">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>17:00</div>
+        <div class="activity-block">
+          <div class="activity-text">闔家歡</div>
+          <div class="activity-description">享用花蓮在地料理（約 30 年的特色餐廳）。</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title date-neutral">12/07（一）<span class="day-theme">循著海岸，慢遊宜蘭</span></h2>
+    <div class="contact-list">
+      <div class="contact-card item-dinner">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>08:00</div>
+        <div class="activity-block">
+          <div class="activity-text">早餐・退房準備</div>
+          <div class="activity-description">悠閒享用早餐，整理行李迎接回程旅遊。</div>
+        </div>
+      </div>
+      <div class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-solid fa-landmark" aria-hidden="true"></i>09:30-10:00</div>
+        <div class="activity-block">
+          <div class="activity-text">七星柴魚博物館</div>
+          <div class="activity-description">認識花蓮柴魚加工、海洋文化與地方產業故事。</div>
+        </div>
+      </div>
+      <div class="contact-card item-dinner">
+        <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>12:30-14:00</div>
+        <div class="activity-block">
+          <div class="activity-text">百匯窯烤雞餐廳</div>
+          <div class="activity-description">品嚐宜蘭在地窯烤雞料理，享用中餐。</div>
+        </div>
+      </div>
+      <div class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-solid fa-leaf" aria-hidden="true"></i>14:00-16:00</div>
+        <div class="activity-block">
+          <div class="activity-text">梅花湖</div>
+          <div class="activity-description">湖岸漫步、欣賞環山湖景與自然風光。</div>
+        </div>
+      </div>
+      <div class="contact-card item-neutral">
+        <div class="card-time"><i class="fa-solid fa-bus" aria-hidden="true"></i>16:00</div>
+        <div class="activity-block">
+          <div class="activity-text">集合返回溫暖的家</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
