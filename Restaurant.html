@@ -256,9 +256,9 @@
   
     .preview-note { color: #b9bdcc; text-align: center; font-size: 13px; margin: 0 0 16px; }
     .country-header { margin-bottom: 16px; }
-    .ocean-art { border-radius: 22px; overflow: hidden; background: #153c4a; margin-bottom: 20px; position: relative; }
+    .ocean-art { border-radius: 22px; overflow: hidden; background: #123958; margin-bottom: 20px; position: relative; }
     .ocean-art svg { display: block; width: 100%; height: auto; }
-    .art-caption { padding: 0 24px 25px; color: #f8e8c7; }
+    .art-caption { padding: 22px 24px 25px; color: #f8e8c7; }
     .art-caption small { color: #88c9cf; letter-spacing: 3px; font-size: 12px; }
     .art-caption h2 { font-size: clamp(25px,6vw,34px); margin: 10px 0; letter-spacing: 2px; }
     .art-caption p { color: #bdd2d5; font-size: 15px; line-height: 1.8; margin: 0; }
@@ -294,22 +294,31 @@
 
       <div class="ocean-art">
         <svg viewBox="0 0 600 310" role="img" aria-label="鯨魚在花蓮山海之間悠游的裝飾插圖">
-          <defs><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#245c69"/><stop offset="1" stop-color="#153c4a"/></linearGradient></defs>
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#348ed0"/><stop offset="1" stop-color="#102e60"/></linearGradient>
+            <radialGradient id="whaleBody" cx="35%" cy="20%" r="85%"><stop stop-color="#b0e6ff"/><stop offset=".4" stop-color="#59b5ed"/><stop offset=".78" stop-color="#2678ba"/><stop offset="1" stop-color="#164879"/></radialGradient>
+            <linearGradient id="belly" x2="0" y2="1"><stop stop-color="#edf8ff"/><stop offset="1" stop-color="#91c5e9"/></linearGradient>
+            <linearGradient id="fin" x2="1" y2="1"><stop stop-color="#6dc8f2"/><stop offset="1" stop-color="#19538d"/></linearGradient>
+            <radialGradient id="sun"><stop stop-color="#f1fbff"/><stop offset=".75" stop-color="#bce4ff"/><stop offset="1" stop-color="#8bc4f0"/></radialGradient>
+            <linearGradient id="mountain" x2="0" y2="1"><stop stop-color="#73add5"/><stop offset="1" stop-color="#285c95"/></linearGradient>
+            <linearGradient id="water" x2="0" y2="1"><stop stop-color="#2c83c0"/><stop offset="1" stop-color="#123c75"/></linearGradient>
+            <filter id="softDepth" x="-25%" y="-35%" width="155%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#08294f" flood-opacity=".45"/></filter>
+          </defs>
           <rect width="600" height="310" fill="url(#sea)"/>
-          <circle cx="478" cy="72" r="34" fill="#f2c48c"/>
-          <path d="M0 135 80 57 156 137 228 71 333 156 415 111 507 164 600 106V230H0Z" fill="#316e73"/>
-          <path d="m48 94 32-37 32 35-30-12Z M205 98l23-27 31 36-29-12Z" fill="#94b7ab"/>
-          <path d="M0 184Q80 157 155 183T310 183T465 183T620 183V310H0Z" fill="#1c5668"/>
-          <path d="M0 225Q80 204 155 225T310 225T465 225T620 225" fill="none" stroke="#69a8af" stroke-width="2" opacity=".45"/>
-          <path d="M143 193C165 136 256 130 318 171C339 184 358 189 381 173C373 145 393 126 420 126C418 150 411 167 397 177C423 171 442 178 453 195C428 205 410 199 392 187C365 243 285 267 204 246C162 236 140 216 143 193Z" fill="#83c8ce"/>
-          <path d="M151 211C190 237 275 252 342 218C308 266 191 265 151 211Z" fill="#d1e8db"/>
-          <path d="M242 219q21 50 58 37q-8-26-36-42" fill="#50a3ae"/>
+          <circle cx="478" cy="72" r="34" fill="url(#sun)"/>
+          <path d="M0 135 80 57 156 137 228 71 333 156 415 111 507 164 600 106V230H0Z" fill="url(#mountain)"/>
+          <path d="m48 94 32-37 32 35-30-12Z M205 98l23-27 31 36-29-12Z" fill="#b2dafa"/>
+          <path d="M0 184Q80 157 155 183T310 183T465 183T620 183V310H0Z" fill="url(#water)"/>
+          <path d="M0 225Q80 204 155 225T310 225T465 225T620 225" fill="none" stroke="#85c9f4" stroke-width="2" opacity=".45"/>
+          <path d="M143 193C165 136 256 130 318 171C339 184 358 189 381 173C373 145 393 126 420 126C418 150 411 167 397 177C423 171 442 178 453 195C428 205 410 199 392 187C365 243 285 267 204 246C162 236 140 216 143 193Z" fill="url(#whaleBody)" filter="url(#softDepth)"/>
+          <path d="M151 211C190 237 275 252 342 218C308 266 191 265 151 211Z" fill="url(#belly)"/>
+          <path d="M242 219q21 50 58 37q-8-26-36-42" fill="url(#fin)" filter="url(#softDepth)"/>
           <circle cx="181" cy="192" r="5" fill="#173d4a"/>
           <path d="M167 210q12 9 24 0" fill="none" stroke="#245366" stroke-width="3" stroke-linecap="round"/>
-          <path d="M221 139q-2-26-21-33m23 33q3-34 24-41" stroke="#b5deda" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <circle cx="192" cy="98" r="5" fill="#b5deda"/><circle cx="253" cy="87" r="4" fill="#b5deda"/>
-          <path d="M38 276h58m354-16h42m35 17h35" stroke="#69a8af" stroke-width="3" stroke-linecap="round"/>
-          <path d="m347 62 9-5 9 5m-34 20 7-4 7 4" stroke="#cadaca" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M221 139q-2-26-21-33m23 33q3-34 24-41" stroke="#c0edff" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <circle cx="192" cy="98" r="5" fill="#c0edff"/><circle cx="253" cy="87" r="4" fill="#c0edff"/>
+          <path d="M38 276h58m354-16h42m35 17h35" stroke="#85c9f4" stroke-width="3" stroke-linecap="round"/>
+          <path d="m347 62 9-5 9 5m-34 20 7-4 7 4" stroke="#d5edff" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
         <div class="art-caption"><small>LOST WHALE · HUALIEN</small><h2>跑完這一程，一起好好吃飯</h2><p>卸下號碼布、坐下聊聊，<br>和隊友一起分享今天的精彩。</p></div>
       </div>
