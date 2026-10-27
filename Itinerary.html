@@ -133,6 +133,22 @@
     .card-link:hover { transform: translateY(-2px); }
     .card-link:focus-visible { outline: 3px solid #ffd54f; outline-offset: 4px; }
 
+    .card-link-hint {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      color: #ffd54f;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .card-link-hint svg { width: 20px; height: 20px; flex-shrink: 0; }
+
     /* 光暈裝飾 */
     .contact-card::before {
       content: '';
@@ -306,6 +322,10 @@
           <div class="activity-text">東大門「選手之夜」</div>
           <div class="activity-description">自行前往，步行約 5-8 分鐘。</div>
         </div>
+        <span class="card-link-hint">
+          查看詳情
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4 4 4-4 4"/></svg>
+        </span>
       </a>
     </div>
 
@@ -324,6 +344,10 @@
           <div class="activity-text">東華大學 EMBA 路跑接力</div>
           <div class="activity-description">跑過森林步道、湖畔與綠意校園；親友同樂。</div>
         </div>
+        <span class="card-link-hint">
+          查看詳情
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4 4 4-4 4"/></svg>
+        </span>
       </a>
       <a class="contact-card item-dinner card-link" href="Restaurants.html">
         <div class="card-time dinner"><i class="fa-solid fa-utensils" aria-hidden="true"></i>12:00-14:30</div>
@@ -331,6 +355,10 @@
           <div class="activity-text">迷途鯨魚 Lost Whale</div>
           <div class="activity-description">於壽豐、東華大學附近享用訂製化套餐。<br>賽後放鬆用餐、補充體力。</div>
         </div>
+        <span class="card-link-hint">
+          查看詳情
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4 4 4-4 4"/></svg>
+        </span>
       </a>
       <div class="contact-card item-th">
         <div class="card-time"><i class="fa-solid fa-ship" aria-hidden="true"></i>15:00-16:30</div>
