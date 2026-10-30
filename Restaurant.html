@@ -257,7 +257,7 @@
     .preview-note { color: #b9bdcc; text-align: center; font-size: 13px; margin: 0 0 16px; }
     .country-header { margin-bottom: 16px; }
     .ocean-art { border-radius: 22px; overflow: hidden; background: #123958; margin-bottom: 20px; position: relative; border: 1px solid rgba(191, 227, 255, .36); box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 12px 30px rgba(0,15,40,.35); }
-    .ocean-art svg { display: block; width: 100%; height: auto; }
+    .ocean-art .food-hero { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; }
     .art-caption { padding: 22px 24px 25px; color: #f8e8c7; }
     .art-caption small { color: #88c9cf; letter-spacing: 3px; font-size: 12px; }
     .art-caption h2 { font-size: clamp(25px,6vw,34px); margin: 10px 0; letter-spacing: 2px; }
@@ -293,58 +293,7 @@
       </div>
 
       <div class="ocean-art">
-        <svg viewBox="0 0 600 310" role="img" aria-label="夕陽暖色與海藍亮面風格的美食插圖">
-          <defs>
-            <linearGradient id="foodSky" x2="0" y2="1"><stop stop-color="#ffb768"/><stop offset=".4" stop-color="#b1b4d0"/><stop offset="1" stop-color="#123f8b"/></linearGradient>
-            <radialGradient id="foodPlate" cx="35%" cy="20%" r="85%"><stop stop-color="#edf8ff"/><stop offset=".4" stop-color="#78c7ee"/><stop offset="1" stop-color="#19538d"/></radialGradient>
-            <linearGradient id="foodCream" x2="0" y2="1"><stop stop-color="#fff5df"/><stop offset="1" stop-color="#91c5e9"/></linearGradient>
-            <linearGradient id="foodGold" x2="0" y2="1"><stop stop-color="#ffe0a2"/><stop offset=".4" stop-color="#ffad45"/><stop offset="1" stop-color="#c96829"/></linearGradient>
-            <linearGradient id="foodLeaf" x2="1" y2="1"><stop stop-color="#d0e7b2"/><stop offset="1" stop-color="#398d82"/></linearGradient>
-            <linearGradient id="foodShine" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-            <filter id="foodDepth" x="-30%" y="-40%" width="160%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#08294f" flood-opacity=".4"/></filter>
-          </defs>
-          <rect width="600" height="310" fill="url(#foodSky)"/>
-          <path d="M0 0H600V37Q310 8 0 100Z" fill="url(#foodShine)"/>
-          <circle cx="478" cy="68" r="33" fill="url(#foodGold)" opacity=".6"/>
-          <ellipse cx="300" cy="261" rx="254" ry="29" fill="#123958" opacity=".25"/>
-          <g filter="url(#foodDepth)">
-            <ellipse cx="297" cy="219" rx="154" ry="60" fill="url(#foodPlate)" stroke="#c1ecff" stroke-width="2"/>
-            <ellipse cx="297" cy="211" rx="128" ry="44" fill="url(#foodCream)" stroke="#edf8ff" stroke-width="2"/>
-            <path d="M203 208q-22-30 4-42q1-25 27-16q20-23 38-1q29-4 29 22l-32 48Z" fill="url(#foodLeaf)" stroke="#d4edce" stroke-width="1.5"/>
-            <path d="m215 179 40 28m-15-43 17 37m-45-5 38 10" fill="none" stroke="#e7f5d8" stroke-opacity=".6" stroke-width="2"/>
-            <path d="M257 179q6-31 45-36q37-8 63 18l23 36q-8 35-60 39q-52 3-78-24Z" fill="url(#foodGold)" stroke="#ffe5b6" stroke-width="2"/>
-            <path d="M270 176q40-28 80-10" fill="none" stroke="#fff1cc" stroke-width="5" stroke-linecap="round" opacity=".7"/>
-            <path d="m281 192 11 21m12-32 12 29m12-31 13 27m9-25 11 20" stroke="#a9572e" stroke-width="5" stroke-linecap="round" opacity=".65"/>
-            <circle cx="219" cy="214" r="13" fill="#e47f65" stroke="#ffd2ab" stroke-width="2"/>
-            <path d="m214 202 5 7 7-6" fill="none" stroke="#4d9580" stroke-width="3"/>
-            <path d="M366 217a24 24 0 0 1 27-29l-8 31Z" fill="#ffe2a0" stroke="#fff0ce" stroke-width="2"/>
-            <path d="m385 195-10 18m17-12-14 14" stroke="#f8b658" stroke-width="2"/>
-          </g>
-          <g filter="url(#foodDepth)">
-            <ellipse cx="120" cy="185" rx="63" ry="20" fill="url(#foodPlate)" stroke="#c1ecff"/>
-            <path d="M67 138q3 58 53 59q50-1 54-59Z" fill="url(#foodPlate)" stroke="#d9f3ff" stroke-width="2"/>
-            <ellipse cx="120" cy="138" rx="53" ry="20" fill="url(#foodGold)" stroke="#edf8ff" stroke-width="5"/>
-            <path d="M85 138q32-19 66-1" fill="none" stroke="#ffe4b5" stroke-width="3"/>
-            <path d="m106 134 10 4m15 5 9-5m-22 7 5 1" stroke="#589c83" stroke-width="4" stroke-linecap="round"/>
-            <path d="M78 151q4 20 18 26" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".5" fill="none"/>
-          </g>
-          <g fill="none" stroke="#fff1df" stroke-width="4" stroke-linecap="round" opacity=".7"><path d="M103 107c-16-16 14-23 2-39"/><path d="M128 101c-14-17 15-26 3-43"/></g>
-          <g filter="url(#foodDepth)">
-            <path d="m458 111 9 88q19 15 43 0l9-88Z" fill="url(#foodGold)" stroke="#ffe5b6" stroke-width="2"/>
-            <ellipse cx="489" cy="111" rx="30" ry="10" fill="#ffe4b5" stroke="#fff1df" stroke-width="2"/>
-            <path d="m473 132 5 53" stroke="#fff8e5" stroke-width="5" stroke-linecap="round" opacity=".65"/>
-            <path d="m496 137 17-63 15-8" fill="none" stroke="#c1ecff" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-            <path d="M457 113a20 20 0 1 1 22-27Z" fill="#ffc866" stroke="#fff1df" stroke-width="3"/>
-            <path d="m461 108 8-17m-8 17 18-8" stroke="#fff1df" stroke-width="2"/>
-          </g>
-          <g fill="none" stroke="#d2eeff" stroke-linecap="round" filter="url(#foodDepth)">
-            <path d="m107 235-17 43m9-68-6 18q1 9 14 9q9 2 13-6l6-18m-14-4-8 25" stroke-width="4"/>
-            <path d="m468 235 25 43" stroke-width="6"/>
-            <ellipse cx="459" cy="220" rx="10" ry="18" transform="rotate(-30 459 220)" fill="url(#foodCream)" stroke-width="2"/>
-          </g>
-          <path d="M294 64v14m-7-7h14m96 9v10m-5-5h10M43 223v10m-5-5h10" stroke="#fff1df" stroke-width="2" stroke-linecap="round" opacity=".7"/>
-          <g fill="#fff1df" opacity=".7"><circle cx="204" cy="83" r="3"/><circle cx="397" cy="116" r="3"/></g>
-        </svg>
+        <img class="food-hero" src="assets/restaurant-food-3d-thumb.jpg" data-full-src="assets/restaurant-food-3d-large.jpg" width="1774" height="887" alt="3D 動畫風格的精緻美食插畫：金黃烤雞、鮮蔬、濃湯與冰涼柑橘飲品，沐浴在暖橘與海藍光影中" fetchpriority="high" decoding="async">
         <div class="art-caption"><small>LOST WHALE · HUALIEN</small><h2>一起揮汗，一起享受美食</h2><p>取下號碼布，一同分享今天的精彩。</p></div>
       </div>
       <div class="visit-list">
@@ -369,5 +318,29 @@
     </div>
 
   </div>
+  <script>
+    // Paint the text and thumbnail before requesting the larger image.
+    const foodHero = document.querySelector('.food-hero[data-full-src]');
+    if (foodHero) {
+      const upgradeFoodHero = () => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          const fullImage = new Image();
+          fullImage.decoding = 'async';
+          fullImage.fetchPriority = 'low';
+          fullImage.onload = async () => {
+            try { await fullImage.decode(); } catch { return; }
+            foodHero.src = fullImage.src;
+          };
+          fullImage.src = foodHero.dataset.fullSrc;
+        }));
+      };
+      if (foodHero.complete) {
+        upgradeFoodHero();
+      } else {
+        foodHero.addEventListener('load', upgradeFoodHero, { once: true });
+        foodHero.addEventListener('error', upgradeFoodHero, { once: true });
+      }
+    }
+  </script>
 </body>
 </html>
