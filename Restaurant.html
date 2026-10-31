@@ -319,42 +319,17 @@
 
   </div>
   <script>
-    // The inline thumbnail needs no separate network request.
+    // Show the embedded thumbnail while the full image loads immediately.
     const foodHero = document.querySelector('.food-hero[data-full-src]');
     if (foodHero) {
-      let upgradeScheduled = false;
-      const upgradeFoodHero = () => {
-        if (upgradeScheduled) return;
-        upgradeScheduled = true;
-        const connection = navigator.connection;
-        if (connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType))) return;
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          // Keep the thumbnail visible and let initial content finish painting.
-          setTimeout(() => {
-            const loadFullImage = () => {
-              const fullImage = new Image();
-              fullImage.decoding = 'async';
-              fullImage.fetchPriority = 'low';
-              fullImage.onload = async () => {
-                try { await fullImage.decode(); } catch { return; }
-                foodHero.src = fullImage.src;
-              };
-              fullImage.src = foodHero.dataset.fullSrc;
-            };
-            if ('requestIdleCallback' in window) {
-              requestIdleCallback(loadFullImage, { timeout: 2000 });
-            } else {
-              loadFullImage();
-            }
-          }, 1200);
-        }));
+      const fullImage = new Image();
+      fullImage.decoding = 'async';
+      fullImage.fetchPriority = 'low';
+      fullImage.onload = async () => {
+        try { await fullImage.decode(); } catch { return; }
+        foodHero.src = fullImage.src;
       };
-      if (foodHero.complete && foodHero.naturalWidth > 0) {
-        upgradeFoodHero();
-      } else {
-        foodHero.addEventListener('load', upgradeFoodHero, { once: true });
-        foodHero.addEventListener('error', upgradeFoodHero, { once: true });
-      }
+      fullImage.src = foodHero.dataset.fullSrc;
     }
   </script>
 </body>
