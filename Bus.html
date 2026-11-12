@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- 手機桌面圖示：iPhone / Android -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-title" content="全E馬">
+  <meta name="theme-color" content="#0f1117">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遊覽車乘車名單｜2026 全E馬</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0f1117; color: #fff; font-family: Arial, "Microsoft JhengHei", sans-serif; }
+    .home-link { position: fixed; top: 16px; left: 16px; z-index: 10; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: #1a1d27; box-shadow: 0 2px 12px #0006; transition: transform .2s; }
+    .home-link:hover { transform: scale(1.1); }
+    .home-link svg { width: 26px; height: 26px; fill: #e8a06a; }
+    .page-container { max-width: 640px; margin: auto; padding: 80px 24px 48px; }
+    .page-title { text-align: center; font-size: 36px; font-weight: 900; font-style: italic; letter-spacing: 1px; margin: 0 0 28px; background: linear-gradient(135deg, #5b9bd5, #8ec3f0, #5b9bd5); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .tips-card { position: relative; isolation: isolate; overflow: hidden; padding: 26px 24px; border: 1px solid rgba(220, 255, 240, .38); border-radius: 24px; background: linear-gradient(135deg, rgba(191, 255, 224, .18) 0%, rgba(43, 117, 88, .22) 45%, rgba(80, 167, 128, .16) 100%); -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%); color: #fff; box-shadow: 0 16px 40px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 rgba(198, 255, 225, .1); }
+    .tips-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(145deg, rgba(255, 255, 255, .12), transparent 35%, transparent 75%, rgba(207, 255, 232, .06)); pointer-events: none; }
+    .tips-card::after { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent); pointer-events: none; }
+    .tips { position: relative; z-index: 1; color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, .65); list-style-type: disc; margin: 0; padding-left: 1.2em; font-size: 21px; line-height: 1.8; }
+    .tips li { padding-left: .2em; margin-bottom: 18px; overflow-wrap: anywhere; }
+    .tips li:last-child { margin-bottom: 0; }
+    .tips li::marker { color: #fff; }
+    .title-icon { display: inline-block; margin-right: .25em; font-style: normal; color: #ffd76a; -webkit-text-fill-color: #ffd76a; }
+    a:focus-visible { outline: 3px solid #ffca28; outline-offset: 4px; }
+    @media (max-width: 380px) { .page-title { font-size: 30px; } .tips { font-size: 20px; } }
+    .page-title { font-size: 30px; margin-bottom: 12px; }
+    .summary { text-align: center; color: #cbd6df; font-size: 18px; margin: 0 0 28px; }
+    .tips-card { margin-bottom: 24px; }
+    .group-title { position: relative; margin: 0 0 16px; color: #ffd76a; font-size: 24px; }
+    .group-count { font-size: 18px; font-weight: 400; color: #d0e9dd; margin-left: 8px; }
+    .passengers { position: relative; margin: 0; padding-left: 1.7em; font-size: 21px; line-height: 1.6; }
+    .passengers li { padding: 10px 0 10px 4px; overflow-wrap: anywhere; border-bottom: 1px solid #ffffff20; }
+    .passengers li:last-child { border-bottom: 0; }
+    .passengers li::marker { color: #a8d9bf; font-size: 17px; }
+    .relation { display: inline-block; font-size: 17px; color: #c5dacc; }
+    @media (max-width: 380px) { .page-container { padding-right: 16px; padding-left: 16px; } .tips-card { padding: 22px 18px; } .page-title { font-size: 26px; } }  </style>
+</head>
+<body>
+  <a href="index.html" class="home-link" title="返回首頁" aria-label="返回首頁">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+  </a>
+  <main class="page-container">
+    <h1 class="page-title"><span class="title-icon" aria-hidden="true">🚌</span>遊覽車乘車名單</h1>
+    <p class="summary">共 32 人｜依搭乘天數分組</p>
+    <!-- 每個 li 代表一位乘客；括號內保留眷屬關係。 -->
+    <section class="tips-card" aria-labelledby="three-days">
+      <h2 class="group-title" id="three-days">搭乘3天<span class="group-count">24人</span></h2>
+      <ol class="passengers">
+        <li>陳瑩書</li>
+        <li>盧碧珠 <span class="relation">(陳瑩書眷屬)</span></li>
+        <li>陳品辰 <span class="relation">(陳瑩書眷屬)</span></li>
+        <li>袁淑瑩</li>
+        <li>于耀琪</li>
+        <li>劉逢志</li>
+        <li>鍾思如 <span class="relation">(劉逢志眷屬)</span></li>
+        <li>郭天立</li>
+        <li>簡雅惠</li>
+        <li>余岳隆</li>
+        <li>姜玫君</li>
+        <li>郭正賢 <span class="relation">(姜玫君眷屬)</span></li>
+        <li>郭昱志 <span class="relation">(姜玫君眷屬)</span></li>
+        <li>邱姿云 <span class="relation">(姜玫君眷屬)</span></li>
+        <li>劉志城</li>
+        <li>鄒德芳</li>
+        <li>張忠敏 <span class="relation">(鄒德芳眷屬)</span></li>
+        <li>施元中</li>
+        <li>王法睿</li>
+        <li>吳姿儀</li>
+        <li>陳春希 教授</li>
+        <li>邱俊榮 教授</li>
+        <li>許順智</li>
+        <li>陳秀雄</li>
+      </ol>
+    </section>
+    <section class="tips-card" aria-labelledby="two-days">
+      <h2 class="group-title" id="two-days">搭乘2天<span class="group-count">8人</span></h2>
+      <ol class="passengers" start="25">
+        <li>黃姿瑛</li>
+        <li>陳秋燕</li>
+        <li>蔡佩娟</li>
+        <li>江秋汶</li>
+        <li>邱宜姿</li>
+        <li>彭淑美</li>
+        <li>黃子恩 <span class="relation">(彭淑美眷屬)</span></li>
+        <li>侯志孟</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
