@@ -238,10 +238,11 @@
       gap: 10px;
     }
     .roster-cell {
+      position: relative;
       background: linear-gradient(135deg, #1e2130 0%, #252a3a 100%);
       border: 2px solid #b05a20;
       border-radius: 12px;
-      padding: 14px 12px;
+      padding: 34px 12px 14px;
       text-align: center;
       font-size: 20px;
       font-weight: 400;
@@ -253,6 +254,16 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 2px 6px rgba(176, 90, 32, 0.2);
+    }
+    .room-number {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-family: Arial, sans-serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1;
+      color: #ffe600;
     }
     .roster-cell.empty-cell {
       background: transparent;
@@ -310,33 +321,33 @@
 
     <p class="roster-title">房間名單｜2晚</p>
     <div class="roster-grid" style="margin-bottom: 28px;">
-      <div class="roster-cell" data-nights="2">陳瑩書<br>盧碧珠<br>陳品辰</div>
-      <div class="roster-cell" data-nights="2">王法睿</div>
-      <div class="roster-cell" data-nights="2">袁淑瑩<br>江秋汶</div>
-      <div class="roster-cell" data-nights="2">李姿蘭<br>眷屬*1</div>
-      <div class="roster-cell" data-nights="2">吳姿儀</div>
-      <div class="roster-cell" data-nights="2">于耀琪<br>劉志城</div>
-      <div class="roster-cell" data-nights="2">劉逢志<br>鍾思如</div>
-      <div class="roster-cell" data-nights="2">郭天立<br>施元中</div>
-      <div class="roster-cell" data-nights="2">簡雅惠<br>余岳隆</div>
-      <div class="roster-cell" data-nights="2">姜玫君<br>郭正賢</div>
-      <div class="roster-cell" data-nights="2">郭昱志<br>邱姿云</div>
-      <div class="roster-cell" data-nights="2">陳春希 教授</div>
-      <div class="roster-cell" data-nights="2">邱俊榮 教授</div>
-      <div class="roster-cell" data-nights="2">許順智</div>
-      <div class="roster-cell" data-nights="2">鄒德芳<br>張忠敏</div>
-      <div class="roster-cell" data-nights="2">陳秀雄</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>陳瑩書<br>盧碧珠<br>陳品辰</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>王法睿</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>袁淑瑩<br>江秋汶</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>李姿蘭<br>眷屬*1</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>吳姿儀</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>于耀琪<br>劉志城</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>劉逢志<br>鍾思如</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>郭天立<br>施元中</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>簡雅惠<br>余岳隆</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>姜玫君<br>郭正賢</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>郭昱志<br>邱姿云</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>陳春希 教授</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>邱俊榮 教授</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>許順智</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>鄒德芳<br>張忠敏</div>
+      <div class="roster-cell" data-nights="2"><span class="room-number">TBD</span>陳秀雄</div>
     </div>
 
     <p class="roster-title">房間名單｜1晚</p>
     <div class="roster-grid">
-      <div class="roster-cell" data-nights="1">廖聰志<br>趙碧珠</div>
-      <div class="roster-cell" data-nights="1">連敏傑<br>胡雅婷</div>
-      <div class="roster-cell" data-nights="1">黃姿瑛<br>蔡佩娟</div>
-      <div class="roster-cell" data-nights="1">陳秋燕<br>邱宜姿</div>
-      <div class="roster-cell" data-nights="1">彭淑美<br>黃子恩</div>
-      <div class="roster-cell" data-nights="1">侯志孟</div>
-      <div class="roster-cell" data-nights="1">鍾曜宇<br>眷屬*3</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>廖聰志<br>趙碧珠</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>連敏傑<br>胡雅婷</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>黃姿瑛<br>蔡佩娟</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>陳秋燕<br>邱宜姿</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>彭淑美<br>黃子恩</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>侯志孟</div>
+      <div class="roster-cell" data-nights="1"><span class="room-number">TBD</span>鍾曜宇<br>眷屬*3</div>
     </div>
 
   </div>
