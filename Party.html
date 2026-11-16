@@ -270,6 +270,20 @@
     .progressive-image > img { display: block; width: 100%; height: 100%; object-fit: contain; opacity: 0; }
     .progressive-image.is-ready { background-image: none !important; }
     .progressive-image.is-ready > img { opacity: 1; }
+    /* 參加人員名單：每列兩人 */
+    .participants-section { position: relative; isolation: isolate; overflow: hidden; margin-top: 32px; padding: 24px 16px; border: 1px solid rgba(195, 225, 255, .38); border-radius: 24px; background: linear-gradient(135deg, rgba(138, 196, 255, .18) 0%, rgba(22, 94, 172, .22) 45%, rgba(40, 140, 218, .16) 100%); -webkit-backdrop-filter: blur(24px) saturate(150%); backdrop-filter: blur(24px) saturate(150%); color: #fff; box-shadow: 0 16px 40px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 rgba(169, 211, 255, .1); }
+    .participants-section::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(145deg, rgba(255, 255, 255, .12), transparent 35%, transparent 75%, rgba(180, 218, 255, .06)); pointer-events: none; }
+    .participants-section::after { content: ''; position: absolute; top: 0; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65), transparent); pointer-events: none; }
+    .participants-section > * { position: relative; z-index: 1; }
+    .participants-title { margin: 0 0 20px; color: #fff; font-size: 26px; font-weight: 800; text-align: center; }
+    .participants-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .participants-list li { display: flex; align-items: baseline; gap: 8px; min-width: 0; padding: 12px 10px; border: 1px solid rgba(160, 210, 255, .4); border-radius: 10px; background: linear-gradient(135deg, rgba(138, 196, 255, .08), rgba(40, 140, 218, .12)); color: #fff; font-size: 18px; line-height: 1.6; overflow-wrap: anywhere; }
+    .participant-number { flex-shrink: 0; color: #acd9ff; font-variant-numeric: tabular-nums; }
+    @media (max-width: 380px) {
+      .participants-section { padding: 20px 10px; }
+      .participants-list { gap: 8px; }
+      .participants-list li { padding: 10px 8px; font-size: 16px; gap: 6px; }
+    }
   </style>
   <noscript><style>.progressive-image { background-image: none !important; } .progressive-image > img { opacity: 1; }</style></noscript>
 </head>
@@ -310,6 +324,72 @@
 	</li>
         <li>葷素可以安排坐同一桌，請各校領隊事先告知哪幾桌有素食需求</li>
       </ul>
+    </section>
+    <section class="participants-section" aria-labelledby="participants-title">
+      <h2 id="participants-title" class="participants-title">參加人員名單</h2>
+      <ol class="participants-list" role="list">
+        <li><span class="participant-number" aria-hidden="true">1.</span><span>陳春希 教授</span></li>
+        <li><span class="participant-number" aria-hidden="true">2.</span><span>邱俊榮 教授</span></li>
+        <li><span class="participant-number" aria-hidden="true">3.</span><span>陳瑩書</span></li>
+        <li><span class="participant-number" aria-hidden="true">4.</span><span>盧碧珠 (陳瑩書眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">5.</span><span>陳品辰 (陳瑩書眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">6.</span><span>廖聰志</span></li>
+        <li><span class="participant-number" aria-hidden="true">7.</span><span>趙碧珠 (廖聰志眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">8.</span><span>王法睿</span></li>
+        <li><span class="participant-number" aria-hidden="true">9.</span><span>袁淑瑩</span></li>
+        <li><span class="participant-number" aria-hidden="true">10.</span><span>白欽全</span></li>
+        <li><span class="participant-number" aria-hidden="true">11.</span><span>黃國朝</span></li>
+        <li><span class="participant-number" aria-hidden="true">12.</span><span>黃國朝眷屬</span></li>
+        <li><span class="participant-number" aria-hidden="true">13.</span><span>陳信龍</span></li>
+        <li><span class="participant-number" aria-hidden="true">14.</span><span>賴勝裕</span></li>
+        <li><span class="participant-number" aria-hidden="true">15.</span><span>鍾曜宇</span></li>
+        <li><span class="participant-number" aria-hidden="true">16.</span><span>吳姿儀</span></li>
+        <li><span class="participant-number" aria-hidden="true">17.</span><span>李姿蘭</span></li>
+        <li><span class="participant-number" aria-hidden="true">18.</span><span>李姿蘭眷屬</span></li>
+        <li><span class="participant-number" aria-hidden="true">19.</span><span>于耀琪</span></li>
+        <li><span class="participant-number" aria-hidden="true">20.</span><span>吳嘉泓</span></li>
+        <li><span class="participant-number" aria-hidden="true">21.</span><span>王宗奕</span></li>
+        <li><span class="participant-number" aria-hidden="true">22.</span><span>簡維毅</span></li>
+        <li><span class="participant-number" aria-hidden="true">23.</span><span>劉逢志</span></li>
+        <li><span class="participant-number" aria-hidden="true">24.</span><span>鍾思如 (劉逢志眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">25.</span><span>郭天立</span></li>
+        <li><span class="participant-number" aria-hidden="true">26.</span><span>簡雅惠</span></li>
+        <li><span class="participant-number" aria-hidden="true">27.</span><span>余岳隆</span></li>
+        <li><span class="participant-number" aria-hidden="true">28.</span><span>謝錦淵</span></li>
+        <li><span class="participant-number" aria-hidden="true">29.</span><span>姜玫君</span></li>
+        <li><span class="participant-number" aria-hidden="true">30.</span><span>郭正賢 (姜玫君眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">31.</span><span>郭昱志 (姜玫君眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">32.</span><span>邱姿云 (姜玫君眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">33.</span><span>許順智</span></li>
+        <li><span class="participant-number" aria-hidden="true">34.</span><span>楊婉萍</span></li>
+        <li><span class="participant-number" aria-hidden="true">35.</span><span>楊婉萍眷屬</span></li>
+        <li><span class="participant-number" aria-hidden="true">36.</span><span>劉志城</span></li>
+        <li><span class="participant-number" aria-hidden="true">37.</span><span>林俊宏</span></li>
+        <li><span class="participant-number" aria-hidden="true">38.</span><span>蕭雯方</span></li>
+        <li><span class="participant-number" aria-hidden="true">39.</span><span>何怡憓</span></li>
+        <li><span class="participant-number" aria-hidden="true">40.</span><span>鄒德芳</span></li>
+        <li><span class="participant-number" aria-hidden="true">41.</span><span>張忠敏 (鄒德芳眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">42.</span><span>陳秀雄</span></li>
+        <li><span class="participant-number" aria-hidden="true">43.</span><span>侯志孟</span></li>
+        <li><span class="participant-number" aria-hidden="true">44.</span><span>陳立偉</span></li>
+        <li><span class="participant-number" aria-hidden="true">45.</span><span>連敏傑</span></li>
+        <li><span class="participant-number" aria-hidden="true">46.</span><span>胡雅婷 (連敏傑眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">47.</span><span>曾世翰</span></li>
+        <li><span class="participant-number" aria-hidden="true">48.</span><span>施元中</span></li>
+        <li><span class="participant-number" aria-hidden="true">49.</span><span>黃姿瑛</span></li>
+        <li><span class="participant-number" aria-hidden="true">50.</span><span>陳秋燕</span></li>
+        <li><span class="participant-number" aria-hidden="true">51.</span><span>蔡佩娟</span></li>
+        <li><span class="participant-number" aria-hidden="true">52.</span><span>江秋汶</span></li>
+        <li><span class="participant-number" aria-hidden="true">53.</span><span>楊琇茹</span></li>
+        <li><span class="participant-number" aria-hidden="true">54.</span><span>羅文村</span></li>
+        <li><span class="participant-number" aria-hidden="true">55.</span><span>邱宜姿</span></li>
+        <li><span class="participant-number" aria-hidden="true">56.</span><span>唐文彬</span></li>
+        <li><span class="participant-number" aria-hidden="true">57.</span><span>彭淑美</span></li>
+        <li><span class="participant-number" aria-hidden="true">58.</span><span>黃子恩 (彭淑美眷屬)</span></li>
+        <li><span class="participant-number" aria-hidden="true">59.</span><span>蔡名章</span></li>
+        <li><span class="participant-number" aria-hidden="true">60.</span><span>蔡名章眷屬</span></li>
+        <li><span class="participant-number" aria-hidden="true">61.</span><span>李佳卉</span></li>
+      </ol>
     </section>
   </main>
   <script>
